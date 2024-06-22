@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src='main.js'></script>
+</head>
+<body>
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32"></svg>
+                <span class="fs-4">Current time in <span id='tz'></span> timezone</span>
+            </a>
+        </header>
+        <div class="d-flex justify-content-center">
+            <h1 id='time'></h1>
+        </div>
+    </div>
+
+</body>
+
+<script>
+    let timeText = document.getElementById('time');
+    let zoneText = document.getElementById('tz');
+    let formatter = Intl.DateTimeFormat("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric"
+    });
+
+    function updateTime() {
+        timeText.textContent = formatter.format();
+    }
+
+    zoneText.textContent = formatter.resolvedOptions().timeZone;
+    setInterval(updateTime, 1000);
+</script>
+
+</html>
