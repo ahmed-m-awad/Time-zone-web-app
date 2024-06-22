@@ -53,3 +53,8 @@ This Flask web application demonstrates how to display the current time and time
 The homepage (/) displays the current time in a specified format (e.g., HH:MM
 ).
 The time zone information is also displayed on the homepage, showing the time zone of the server where the application is hosted.
+
+## WSGi
+```bash
+gunicorn wsgi
+```
